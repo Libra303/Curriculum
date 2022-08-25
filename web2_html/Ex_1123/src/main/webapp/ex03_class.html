@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>class를 통한 css정의</title>
+		
+		<style>
+			/* div{ color:#f00;} */
+			
+			/* text라는 class에게 속성을 적용 */
+			.text{ color:#f00;}
+			.text2{ color:#00f;}
+			
+			/* p태그중 text라는 class를 가진 태그에게만 css를 적용 */
+			p.text{ color:#0f0;}
+			
+			/* div 내부에 있는(공백) text라는 class를 가진 p태그에게 적용 */
+			div p.text{ color:#aaf;}
+		</style>
+		
+	</head>
+	
+	<body>
+		<!-- 클래스명은 중복된 형태로 작성이 가능 -->
+		<p class = "text">클래스를 통한 스타일시트 적용</p>	
+	
+		<div class = "text">
+			개구쟁이 뽀로로 장난꾸러기 크롱<br>
+			우람한 포비 조그만 해리도 사이좋은 친구죠
+		</div>
+
+		<div class = "text2">
+			영리한 에디 우직한 포비<br>
+			수줍은 루피 발랄한 패티도 사이좋은 친구죠
+		</div>
+		
+		<div>
+			<p class = "text">
+				안녕하세요
+			</p>		
+		</div>
+	</body>
+</html>

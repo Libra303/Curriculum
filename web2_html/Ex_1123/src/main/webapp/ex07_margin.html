@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>마진(바깥쪽 여백)</title>
+		<style type="text/css">
+			p, div{ border:5px solid red; }
+			.box1{ margin:20px; } /* 상하좌우 */
+			.box2{ margin:40px 50px; } /* 상하, 좌우 */
+			.box3{ margin:20px 50px 30px;} /* 상, 좌우 , 하 */
+			.box4{ margin:20px 30px 50px 70px;}/* 상, 우, 하 , 좌  */
+			
+			/* .box5{ margin-bottom:50px} */
+			
+			/* 0px일 때는 px단위를 생략할 수 있다. */
+			.box5{ margin:0 0 50px;}
+			
+			
+		</style>
+		
+	</head>
+	<body>
+		<p>p태그는 단락 구별이 용이하도록 기본적으로 16px정도의 마진값을 가지고 있다</p>
+		
+		<div class="box1">마진 테스트중 1</div>
+		<div class="box2">마진 테스트중 2</div>
+		<div class="box3">마진 테스트중 3</div>
+		<div class="box4">마진 테스트중 4</div>
+		
+		<div class="box5">마진 테스트중 5</div>
+		
+	</body>
+</html>
