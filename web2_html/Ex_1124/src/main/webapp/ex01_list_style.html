@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>list의 background</title>
+		<style type="text/css">
+			.div1{ width: 200px; height: 200px; 
+				   border: 1px solid black;
+				   background:yellow url(image/backgroundImage.gif) repeat-x; }
+				   /* repeat : 바둑판 정렬
+				   	  no-repeat : 한번만
+				   	  repeat-x : x좌표 채우기
+				   	  repaet-y : y좌표 채우기
+				    */
+				   
+			
+			.div2{ width:200px; height: 200px;
+				   border: 1px solid black; 
+				  /*  background:url(image/backgroundImage.gif) no-repeat center;} */
+				  /*  background:url(image/backgroundImage.gif) no-repeat right bottom; */
+				  /*  background:url(image/backgroundImage.gif) no-repeat 20px 100px;} */
+				   background:url(image/backgroundImage.gif) no-repeat 10% 100%;}
+				   
+			li{list-style: none; 
+			/* border: 1px solid red; */
+			   background: url(image/arrow.gif) no-repeat 0 60%; 
+			   padding-left: 10px;}		
+			   
+			   
+		</style>
+	</head>
+	<body>
+		
+		<ul>
+			<li>menu1</li>		
+			<li>menu2</li>		
+			<li>menu3</li>		
+			<li>menu4</li>		
+		</ul>
+	
+	
+		<div class="div1">
+			배경 연습용1
+		</div>
+
+		<div class="div2">
+			배경 연습용2
+		</div>
+	</body>
+</html>

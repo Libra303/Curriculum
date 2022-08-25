@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>float</title>
+		
+		<style type="text/css">
+			*{ margin: 0; padding: 0; }
+			body{ font:15px "굴림",sans-serif; }
+			
+			#container{ width: 500px;
+						background: #fdd; 
+						margin:10px auto;
+						padding: 10px;
+						border: 5px solid #caa;
+						
+						/* float속성을 가진 자식태그를 가진 부모는 overflow:hidden속성을 가지고 있는 것이 좋다
+						
+						float속성의 자식을 부모의 영역안에 묶어두기 위한 hidden과 같은 개념을 'float의 해제'라고 한다*/
+						overflow:hidden; }
+						
+						
+			.a1{ width: 200px; padding: 15ps; 
+				 background: #dda;
+				 float: left; }
+
+			.a2{ width: 200px; padding: 15ps; 
+				 background: #ba7;
+				 float: right; }
+			
+			h1{text-align: center;}
+				 
+						
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<h1>내 친구 뽀로로 3기</h1>
+			
+			<div class="a1">
+				<p>
+					개구쟁이 뽀로로 장난꾸러기 크롱
+					우람한 포비 조그만 해리도 사이좋은 친구죠
+					영리한 에디 우직한 로디
+					수줍은 루피 발랄한 패티도 사이좋은 친구죠
+				</p>
+			</div>
+
+			<div class="a2">
+				<p>
+					개구쟁이 뽀로로 장난꾸러기 크롱
+					우람한 포비 조그만 해리도 사이좋은 친구죠
+					영리한 에디 우직한 로디
+					수줍은 루피 발랄한 패티도 사이좋은 친구죠
+				</p>
+			</div>
+			
+		</div>
+	</body>
+</html>

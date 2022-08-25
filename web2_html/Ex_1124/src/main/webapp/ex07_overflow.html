@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>overflow</title>
+	
+		<style type="text/css">
+			p{ border: 1px solid black; 
+		 	   padding: 5px;
+		 	   width: 150px; 
+		 	   height: 100px; }
+		 	   
+		 	/* hidden : 정해진 영역에서만 내용을 표시 */
+		 	.a1{overflow: hidden;}
+			
+			/* scroll : 내용의 길이와는 상관없이 무조건 보여지는 스크롤 */
+		 	.a2{overflow: scroll;}
+			
+			/* auto : 내용이 넘칠때만 생성되는 스크롤 */
+		 	.a3{overflow: auto;}
+	
+			/* 기본값 : 영역과 상관없이 안쪽의 내용을 모두 보여줌 */
+		 	.a4{overflow: visible;}
+			
+		</style>
+	</head>
+	<body>
+		<p class="a1">
+		 	푸른바다 아기고래 출렁출렁 파도타고
+		 	위로 아래로 신나게 호호호호호
+		 	바다의 마법사 문어 빨강파랑 노랑초록 변할 수 있지
+		</p>
+
+		<p class="a2">
+		 	푸른바다 아기고래 출렁출렁 파도타고
+		 	위로 아래로 신나게 호호호호호
+		 	바다의 마법사 문어 빨강파랑 노랑초록 변할 수 있지
+		</p>
+
+		<p class="a3">
+		 	푸른바다 아기고래 출렁출렁 파도타고
+		 	위로 아래로 신나게 호호호호호
+		 	바다의 마법사 문어 빨강파랑 노랑초록 변할 수 있지
+		</p>
+
+		<p class="a4">
+		 	푸른바다 아기고래 출렁출렁 파도타고
+		 	위로 아래로 신나게 호호호호호
+		 	바다의 마법사 문어 빨강파랑 노랑초록 변할 수 있지
+		</p>
+	</body>
+</html>

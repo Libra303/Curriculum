@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>자식선택자</title>
+		
+		<style>
+			/* > :  직계자식에게만 속성을 적용하는 자식 선택자 */
+			#header > p{color: red;}
+		</style>
+	</head>
+	<body>
+
+		<div id="header">
+			<p>header의 직계자식</p>
+			
+			<div id="nav">
+				<p>header의 손주</p>
+			</div>
+		</div>
+		
+
+		<div id="content">
+			<p>content의 직계자식</p>
+		</div>
+
+	</body>
+</html>
