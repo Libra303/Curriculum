@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Layout 디자인 해보기</title>
+		
+		<style type="text/css">
+			*{ margin: 0; padding: 0; }
+			li{ list-style: none; }	
+			a{text-decoration: none; }	
+			
+			#header{ width: 960px; height: 150px;
+					 border:1px solid red;
+					 margin: 10px auto;
+					 position: relative; }
+			
+			#hgroup{ position: absolute; left: 5px; top: 10px; }	
+				
+			li{ float: left; }
+			
+			#a1 ul{ overflow: hidden; }
+			#a2 ul{ overflow: hidden; }
+			
+			#a1{ position: absolute; right: 0; top: 3px; }
+			#a2{ position: absolute; right: 0; bottom: 0; }
+			
+			#a1 li{ border-right: 1px solid gray;
+					border-top: 1px solid gray;
+					border-bottom: 1px solid gray; }
+			#a1 li:first-child{ border-left: 1px solid gray; }
+			#a1 li a{ display: block; 
+					  padding: 2px 10px;}
+			#a1 li a:hover{ background: #999; color: #fff; }
+
+			
+			#a2 li{ border-right: 1px solid gray;
+					border-top: 1px solid gray;
+					border-bottom: 1px solid gray; }
+			#a2 li:first-child{ border-left: 1px solid gray; }
+			#a2 li a{ display: block; padding: 10px 20px; }
+			#a2 li a:hover{ background: #666; color: #fff; }
+
+		</style>
+		
+	</head>
+	<body>
+
+		<div id = "header">
+			
+			<div id="hgroup">
+				<h1>Rint Development</h1>
+				<h2>HTML5 + CSS</h2>
+			</div>
+			
+			<div id="a1">
+				<ul>
+					<li><a href="#">WEB</a></li>
+					<li><a href="#">MOBLIE</a></li>
+					<li><a href="#">GAME</a></li>
+					<li><a href="#">SIMULATION</a></li>
+					<li><a href="#">DATA</a></li>
+				</ul>
+			</div>
+			
+			<div id="a2">
+				<ul>
+					<li><a href="#">HTML5</a></li>
+					<li><a href="#">CSS</a></li>
+					<li><a href="#">JavaScript</a></li>
+					<li><a href="#">JSP</a></li>
+					<li><a href="#">SPRING</a></li>
+				</ul>
+			</div>
+		
+		</div>
+
+	</body>
+</html>

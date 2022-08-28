@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>테이블 css정의하기</title>
+		
+		<link rel = "stylesheet" href = "css/reset.css"/>
+		
+		<style type="text/css">
+			table{ border: 1px solid gray;
+				   font: 15ppx "돋움", sans-serif;
+				   margin: 0 auto; }
+			
+			caption{ font: bold 30px sans-serif;
+					 margin-bottom: 20px; }	 
+					 
+			th{ padding: 15px 20px;
+				width: 100px; }  
+				
+			td{ text-align: center; }
+			
+			thead th{ background: #36f; 
+					  color:#fff;
+					  border-bottom: 5px solid #000; }
+				   
+		</style>
+	
+	</head>
+	<body>
+		<table border = "1">
+			<caption>업종별 모범거래 기준 주요 내용</caption>
+					
+			<thead>
+				<tr>
+					<th>구분</th>
+					<th>제빵</th>
+					<th>피자</th>
+					<th>치킨</th>
+					<th>커피</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr>
+					<th>영업지역</th>
+					<td>500m</td>
+					<td>1,500m</td>
+					<td>800m</td>
+					<td>500m</td>
+				</tr>
+				
+				<tr>
+					<th>광고</th>
+					<td>관련내용 없음</td>
+					<td>총 광고비 본사와 사전 동의</td>
+					<td>관련내용 없음</td>
+					<td>관련내용 없음</td>
+				</tr>
+				
+				<tr>
+					<th>대금지급</th>
+					<td>월 1회 정산</td>
+					<td>월 1회 정산</td>
+					<td>월 1회 정산</td>
+					<td>관련내용 없음</td>
+				</tr>
+			</tbody>
+			
+		</table>
+		
+	</body>
+</html>

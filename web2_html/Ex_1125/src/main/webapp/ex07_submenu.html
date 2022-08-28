@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>서브메뉴 디자인</title>
+		
+		<link rel = "stylesheet" href="css/reset.css"/>
+		
+		<style type="text/css">
+			#nav{ width: 1000px;
+				  height: 45px;
+				  background: #666; 
+				  margin: 0 auto; 
+				  padding: 6px 7px; }
+				  
+			#nav > li{ float: left;
+				       margin: 0 15px; 
+				       padding: 10px;
+				       margin-left: 80px; 
+				       position: relative; }
+				       
+			a{ display: block; 
+			   font: bold 20px sans-serif;
+			   color: #e7e5e5; }
+			   
+			li:hover a{ background: #fff; color: #444; }
+			
+			#nav ul{ position: absolute;
+			 		 left: 0;
+			         top: 40px; 
+			         width: 150px;
+			         border: 1px solid #b4b4b4;
+			         display: none; }
+		
+			#nav li:hover ul{display: block; }
+			
+			#nav ul li:hover a{background: #ccc; color: #fff; }
+			
+			#nav ul li a{ padding: 10px; }
+			         
+		</style>
+		
+	</head>
+	<body>
+		<ul id = "nav">
+			<li>
+				<a href="#">처음으로</a>
+			</li>
+			
+			<li>
+				<a href="#">여행안내</a>
+				<ul>
+					<li><a href="#">소개합니다</a></li>
+					<li><a href="#">오시는길</a></li>
+				</ul>
+			</li>
+			
+			<li>
+				<a href="#">이용방법</a>
+				<ul>
+					<li><a href="#">객실 둘러보기</a></li>
+					<li><a href="#">요금 안내</a></li>
+					<li><a href="#">예약 하기</a></li>
+					<li><a href="#">예약 안내</a></li>
+				</ul>
+			</li>
+			
+			<li>
+				<a href="#">게시판</a>
+				<ul>
+					<li><a href="#">공지사항</a></li>
+					<li><a href="#">Q &amp; A</a></li>
+				</ul>
+			</li>
+			
+			<li>
+				<a href="#">프로필</a>
+			</li>
+		</ul>
+	</body>
+</html>
