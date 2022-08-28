@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Funtion</title>
+		
+		<script type="text/javascript">
+			function send( n, s ){
+				var pp = document.getElementById("pp");
+				pp.innerHTML = n + " / " + s;
+			}	
+		
+		</script>
+		
+	</head>
+	<body>
+		<input type="button" value="버튼" onclick="send(100, '안녕');">
+		<p id="pp"></p>
+	</body>
+</html>

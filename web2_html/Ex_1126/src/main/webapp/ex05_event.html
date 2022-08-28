@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		
+		<script type="text/javascript">
+		//함수 바깥에선 일반 var변수는 생성 및 사용이 가능
+		var num = 0;
+		
+		//함수 바깥에서는 검색코드를 작성할 수 없다
+		//var aa = document.getElementById("a1");
+		
+		/* 자바스크립트의 메서드(함수)*/
+			function yourOK(){
+				/* id가 a1인 input을 검색하여value값을 꺼내온다 */
+				/* 스크립트 영역에서 body영역의 태그를 검색하는 방법  */
+				var res = document.getElementById("a1");
+				//alert( res.value );
+				
+				//var a2 = document.getElementById("a2");
+				//a2.value = res.value;
+				document.getElementById("a2").value = res.value;
+				
+				//var p = document.getElementById("p1");
+				//p.innerHTML = res.value;
+				document.getElementById("p1").innerHTML = res.value;
+				
+				//var btn = document.getElementById("btn");
+				//btn.value = "button";
+				document.getElementById("btn").value = "button";
+			}
+			
+			function send(){
+				var test = document.getElementById("test");
+				var div = document.getElementById("div1");
+				
+				div.innerHTML = test.value;
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<input type="text" value="" id="a1">
+		<input type="button" value="확인" onclick="yourOK();" ><br>
+		
+		<input type="text" id="a2"><br>
+		<p id="p1">여기에 내용이 들어감</p>
+		
+		<input type="button" id="btn" value="나도버튼" > 
+		
+		<hr>
+		
+		<input id="test" placeholder="여기에 값을 넣어주세요">
+		<input type="button" value="확인"	 onclick="send();">
+		
+		<div id="div1"></div>
+		
+	</body>
+</html>
