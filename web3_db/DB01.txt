@@ -1,0 +1,65 @@
+
+--DataBase란 : 데이터를 저장하는 객체 또는 관계들의 집합
+   ㄴTable : 특정한 종류의 데이터를 구조적으로 묶어놓은 목록 
+------------------------------------------------------------------------
+
+1.SQL문장(Query문): 테이블에게 원하는 데이터를 요청하기 위해 작성하는 명령어
+	1)sql문장은 대소문자르 구별하지 않는다
+	2)여러줄에 걸쳐 입력이 가능
+	3)세미콜론으로 끝내준다
+--SQL문장의 종류
+1) DML( data Manipulation Language ) : 데이터 조작어
+     ( select, insert, update, delete )
+2) DDL( Data Definition Language ) : 데이터 정의어
+     (Create, Alter, Drop, Rename..등 )
+3) DCL( Data Control Language ) : 데이터 제어어
+     ( Grant, Revoke ) 
+
+------------------------------------------------------------------------
+
+1-1. select문: DB에 저장된 자원을 검색하는 문장
+
+--사원테이블(employees)의 모든 자원을 조회하시오
+Select * From employees; 
+
+--사원테이블에서 사원들의 사번(employee_id)과 이름(first_name), 성(last_name)을 조회하시오
+Select employee_id,first_name,last_name From employees; 
+
+-- 사번,이름,급여,보너스, 실제로 받는 보너스 금액을 조회
+Select employee_id, first_name,salary, commission_pct, salary * commission_pct bonus  from employees;
+
+------------------------------------------------------------------------
+
+1-2. 조건부여( where )
+
+--예) 사원테이블에서 급여가 10000이상인 사원들의 정보를 사번,이름,급여 순으로 출력
+Select employee_id, first_name, salary from employees where salary >= 10000;
+
+--문) 사번이 150번을 초과하는 사원들의 사번, 이름, 입사일을 출력
+select employee_id, first_name, hire_date
+from employees 
+where employee_id > 150;
+
+--예) 이름이 Michael인 사원의 사번, 이름, 부서번호를 출력
+select employee_id, first_name, department_id 
+from employees 
+where first_name = 'Michael';
+
+--문) 직종이 SA_REP인 사원들의 모든 정보를 출력
+Select *
+From employees
+where JOB_ID = 'SA_REP';
+
+--예) 이름이 Michael인 사원들중 급여가 3000이상인 사원의 사번, 이름, 부서번호를 출력
+select employee_id, first_name, department_id 
+from employees 
+where first_name = 'Michael' and salary >= 3000;
+
+--문) 급여가 5000초과 10000이하인 사원들의 모든 정보를 출력
+select * from employees
+where 5000 < salary and salary <= 10000 ;
+
+--)문 job_id 가 SA_MAN이거나 IT_PROG인 사원들의 사번, 직종, 이름을 조회하시오
+select employee_id, job_id , first_name
+from employees
+where job_id = 'SA_MAN' or job_id = 'IT_PROG';

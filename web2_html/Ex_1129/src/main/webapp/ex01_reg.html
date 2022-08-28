@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Register</title>
+		
+		<script type="text/javascript">
+			function register() {
+				//forms[n] : 현재 html문서 내의 form태그들을 배열로 관리/구별
+				var f = document.forms[0];
+				
+				var id = f.m_id.value;
+				var pwd = f.m_pwd.value;
+				var nick = f.m_nick.value;
+				
+				//유효성 체크
+				if( id == ""){
+					alert("아이디를 입력해주세요");
+					return;
+				}
+				if( pwd == ""){
+					alert("비밀번호를 입력해주세요");
+					return;
+				}
+				if( nick == ""){
+					alert("닉네임은 필수입니다..");
+					return;
+				}
+				
+				f.action = "login.jsp";
+				
+				//form태그가 가진 모든 name속성을 url 파라미터로 전달
+				f.submit();
+			}
+		</script>
+	</head>
+	<body>
+		<!-- form태그 안에 존재하는 input속성들의 값을 확인하여 서버로 전달  -->
+		<form>
+			<table border="1">
+				<tr>
+					<th>아이디</th>
+					<td><input name="m_id"></td>
+				</tr>
+				
+				<tr>
+					<th>비밀번호</th>
+					<td><input type="password" name="m_pwd"></td>
+				</tr>
+				
+				<tr>
+					<th>닉네임</th>
+					<td><input name="m_nick"></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2" align="center">
+						<input type="button" value="회원가입" onclick="register();"> 
+					</td>
+				</tr>
+				
+			</table>
+		</form>
+	</body>
+</html>

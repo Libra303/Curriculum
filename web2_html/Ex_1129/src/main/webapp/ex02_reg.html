@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Form  Tag ex2</title>
+		<script type="text/javascript">
+			function send(){
+				// form 태그에 name 속성으로 지정해둔 fff를 찾아서 가져온다
+				var f = document.fff;
+				var id = f.id.value;
+				var tel = f.tel.value;
+				
+				if( id == ""){
+					alert("아이들 입력해주세요");
+					return;
+				}
+				if( tel == ""){
+					alert("전화번호들 입력해주세요");
+					return;
+				}
+				
+				f.submit();
+			}	
+		</script>
+	</head>
+	<body>
+		<form name="fff" action="aaa.jsp"> 
+			<table>
+				<tr>
+					<th>ID :</th>
+					<td><input name="id"></td>
+				</tr>
+				
+				<tr>
+					<th>TEL : </th>
+					<td><input name="tel"></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2"	align="center">
+						<input type="button" value="확인" onclick="send();">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
