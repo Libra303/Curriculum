@@ -1,0 +1,88 @@
+9. JOIN : 테이블과 테이블을 연결하여 특정 데이터를 얻고자 할때 
+
+**JOIN을 하기에 앞서....
+--DB의 자료형
+1 )NUMBER : 정수,실수
+2) VARCHAR2 : 문자, 문자열
+3) DATE : 날짜
+
+create table 테이블명{
+	(참고 -> 컬럼명 자료형....)
+	name VARCHAR2( 50 ),
+	age NUMBER( 3 ),
+	tel VARCHAR2( 15 ) primary key,
+	birth DATE,
+	addr VARCHAR2( 100 ) unique,
+	email VARCHAR2( 50 ) unique
+};
+기본키( primary key ) : 고유한 식별자로써, 속성에 대한 중복을 방지하는 키
+후보키( candidate key ) : name, age, birth..등의 기본키가 될 자격이 있는 컬럼들
+외래키( foreign key ) : 한 테이블의 후보키중 하나가 다른테이블의 기본키로 지정되어 있는 경우
+
+예) departments, locations 테이블을 조회하여 
+부서번호, 부서명, 도시명을 조회해보자
+select  dept.location_id, loc.location_id, dept.department_id, dept.department_name, loc.city
+from departments dept, locations loc
+where dept.location_id = loc.location_id;
+
+예) 사원테이블과 부서테이블 ( departments ) 를 조회하여 사원명, 부서번호, 부서이름을 출력
+select emp.first_name, emp.department_id, dep.department_name
+from employees emp, departments dep
+where emp.department_id = dep.department_id;
+
+예) locations(지역)와 countries(나라) 테이블을 조회하여 각 도시명(city)과 도시가 위치하고 있는
+국가(country_name)를 조회
+select city, country_name
+from locations l, countries c
+where l.country_id = c.country_id;
+
+문) 사원테이블과 jobs테이블을 조회하여 이름, 성, 이메일, 직종(job_id), 직종풀네임( job_title ) 을 조회
+select first_name, last_name, email, e. job_id, job_title
+from employees e, jobs j
+where e.job_id = j.job_id;
+
+문) 나라(countries), 대륙(regions)테이블로부터 country_name, region_name을 출력하시오
+select country_name, region_name
+from countries c, regions s
+where c.region_id = s.region_id;
+
+문) 사원,부서(departments), 지역(locations) 테이블을 조회하여 이름, 성, 이메일, 부서번호(departments_id)
+,지역번호( location_id ), 도시명을 출력하되 도시가 Seattle인 경우만 출력
+select first_name, last_name, email, e.department_id, d.department_name, d.location_id, city
+from employees e, departments d, locations l
+where e.department_id = d.department_id AND d.location_id = l.location_id AND city = 'Seattle';
+
+예) 사원테이블과 부서테이블의 부서번호가 일치하는 경우 검색
+select e.first_name, e.job_id, d.department_name
+from employees e, departments d
+where e.department_id = d.department_id;
+
+위의 코드를 join키워드를 통해서 작성해보자
+select e.first_name, e.job_id, d.department_name
+from employees e
+inner join departments d
+on e.department_id = d.department_id;
+
+----------------------------------------------------------------------------------------------------------------------------
+
+10 .view : 기존 테이블에는 존재하지 않는 정보를 추가하거나 제거해서 원하는 정보만 검색이 가능하도록
+	제작한 가상의 테이블
+select employee_id, first_name, salary, commission_pct, commission_pct*salary
+from employees;
+
+위의 다섯가지 정보만을 조회할 수 있도록 하는 가상의 테이블( view )을 만들자
+create or replace view EMP as --EMP라는 이름의 VIEW를 생성
+select employee_id, first_name, salary, commission_pct pct , commission_pct*salary bouns
+from employees;
+
+예) job_id가 ST_CLERK인 데이터의 사번, 이름, 직종을 출력하는 VIEW를 만들자
+create or replace view MY_JOB as
+select employee_id, first_name, job_id
+from employees
+where job_id = 'ST_CLERK';
+
+예) 급여를 많이 받는 순서대로 순위를 매겨서 순위가 낮은순으로 순위,이름,급여 순서로 조회하는 view 생성
+create or replace view EMP_RANK as
+select RANK() OVER( order by salary DESC ) rank, first_name, salary
+from employees
+order by rank;
