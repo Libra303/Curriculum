@@ -1,0 +1,37 @@
+8.SUBQUERY : 특정 SQL문장 안에 또 다른 SQL 문장이 포함되어 있는 것  여러번 DB를 접속해야
+	       하는 경우 서브 쿼리를 통해 접속 횟수를 줄여 검색속도를 증가 시킬 수 있다.
+	    
+예) 사원테이블에서 이름이 Michael 이고, 직종이 MK_MAN인 사원의 급여를 초과해서 받는
+사원들의 정보를 사번, 이름, 직종, 급여 순으로 출력
+
+select salary from employees
+where first_name = 'Michael' AND job_id = 'MK_MAN'; --13000
+
+select employee_id, first_name, job_id, salary
+from employees
+where salary > 13000;
+
+--위의 두 개 쿼리문을 subquery를 통해 하나로 합쳐보자
+select employee_id, first_name, job_id, salary
+from employees
+where salary > ( select salary from employees
+	          where  first_name = 'Michael' AND job_id = 'MK_MAN' );
+
+문) 사번이 150인 사원의 급여와 같은 금액을 받는 사원들의 사번, 이름, 급여 출력
+select employee_id, first_name, salary
+from employees
+where salary = (select salary from employees where employee_id = 150 ) ;
+
+
+
+문) 사번이 111번인 사원의 직종과 같고 사번이 159번인 사원의 급여를 초과하는 사원들의 정보를
+    사번, 이름, 직종, 입사일, 급여 순으로 출력
+select employee_id, first_name, job_id, hire_date, salary
+from employees
+where job_id = ( select job_id from employees where employee_id = 111) 
+         AND salary > ( select salary from employees where employee_id = 159); 
+
+문) Bruce와 같은 부서에서 근무하고 있는 사원들의 이름과 부서를 출력
+select first_name, department_id 
+from employees
+where department_id = ( select department_id from employees where first_name = 'Bruce' )

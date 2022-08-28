@@ -1,0 +1,116 @@
+그룹함수 : 여러 행 또는 테이블 전체에 대하여 한개의 결과를 가져오는 함수
+  1)AVG() : 평균
+  2)COUNT() : 행의 갯수를 구하는 함수
+  3)MAX() : 최댓값
+  4)MIN() : 최솟값
+  5)SUM() : 총 합
+
+--select first_name, COUNT( * ) from employees;
+일반 컬럼과 그룹함수는 함께 사용할 수 없다. 
+
+예) 사번을 가지고 있는 모든 사원의 수를 출력
+select COUNT( employee_id ) from employees;
+select COUNT( salary ) from employees;
+select COUNT( * ) from employees;
+
+예) 보너스를 받는 사원의 수를 출력
+select COUNT( commission_pct ) from employees;
+
+문) 직종이 SA_REP인 급여의 최댓값, 급여의 최솟값 순으로 출력
+select MAX( salary) MAX, MIN( salary ) MIN from employees
+where job_id = 'SA_REP';
+
+예) 사원테이블의 부서의 갯수 출력
+select COUNT( distinct department_id ) from employees;
+--distinct : 중복 값을 한개로 처리
+
+문) 80번 부서에 해당되는 사원들의 급여의 평균, 총 합을 화면에 출력
+select AVG( salary ) AVG, SUM( salary ) SUM  from employees
+where department_id = 80;
+
+문) 50번 부서에서 근무하는 사원 수를 출력
+select count( * ) count from employees
+where department_id = 50;
+
+-----------------------------------------------------------------------------------------------
+
+6. 그룹화 : 그룹함수를 통해 얻어온 결과를 소그룹별로 세분화 하기 위한 방법
+  
+예) 직종별 인원수를 출력해보자
+select job_id, COUNT(*) from employees
+group by job_id;
+
+문) 각 부서별 급여의 평균과 총 합을 구하시오
+select department_id, AVG( salary ) , SUM( salary )
+from employees
+group by department_id;
+소수 2 반올림
+select department_id, ROUND(AVG( salary ),1) AVG , SUM( salary ) SUM
+from employees
+group by department_id;
+
+예) 각 부서별 부서번호, 직종, 인원수, 급여의 합을 출력
+select department_id, job_id, COUNT( * ), SUM( salary ) 
+from employees
+group by department_id, job_id;
+
+문) 직종별로 급여의 평균을 직종, 평균 순으로 조회
+select job_id, AVG( salary ) 
+from employees
+group by job_id;
+
+문) 부서번호,부서별 급여 합계 순으로 출혁하되 급여의 합이 높은 순으로 정렬
+select department_id, SUM( salary ) sum
+from employees
+group by department_id
+order by sum DESC;
+
+문) 부서번호, 직종, 급여의 합, 사원 수, 평균급여를 화면에 출력
+부서번호가 낮은순, 급여의 합이 큰 순으로 정렬
+select department_id, job_id, SUM( salary ) , count( * ), AVG( salary )
+from employees
+group by department_id, job_id
+order by department_id, SUM( salary ) DESC;
+
+-----------------------------------------------------------------------------------
+
+7.Having 절: 조건식에서 그룹함수를 사용하고자 할때 필요한 키워드
+예) 부서별 인원수를 출력하되, 인원수가 10명 이상인 부서만 출력
+select department_id, COUNT( * ) from employees
+group by department_id
+having COUNT( * ) >= 10;
+
+문) 직종, 급여의 최댓값을 화면에 출력하되 급여의 최댓값이 5000를 초과하는 경우만 출력
+select job_id, MAX( salary )
+from employees
+group by job_id
+having MAX( salary ) > 5000;
+
+문) 부서번호, 급여의 합,( 소수점 2자리까지 반 올림하는) 급여의 평균, 인원수순으로 출력하되,
+ 급여의 합이 30000이상인 경우만 출력하시오
+select department_id, SUM( salary ), ROUND( AVG( salary ), 2 ), COUNT( * )
+from employees
+group by department_id
+Having SUM( salary ) >= 30000;
+
+문) 각 부서별 id, 평균급여( 소수점이하 절삭)를 조회하되 평균급여가 10000미만인 그룹만 조회해야
+하며 부서번호가 50번 보다 작은 부서만 조회
+select department_id, TRUNC( AVG( salary ), 0 ) from employees
+group by department_id
+having AVG( salary ) < 10000 AND department_id < 50;
+또는
+select department_id, TRUNC( AVG( salary ), 0 ) from employees
+where department_id < 50
+group by department_id
+having AVG( salary ) < 10000;
+
+문) 부서번호, 직종, 인원수를 출력하되 직종이 MAN으로 끝나는 경우만 조회하시오
+select department_id,  job_id, COUNT( * ) from employees
+where job_id LIKE '%MAN'
+group by department_id, job_id;
+
+
+
+
+
+
