@@ -25,6 +25,8 @@ Select * From employees;
 --사원테이블에서 사원들의 사번(employee_id)과 이름(first_name), 성(last_name)을 조회하시오
 Select employee_id,first_name,last_name From employees; 
 
+==이하 27강==========================================================
+
 -- 사번,이름,급여,보너스, 실제로 받는 보너스 금액을 조회
 Select employee_id, first_name,salary, commission_pct, salary * commission_pct bonus  from employees;
 
